@@ -3,6 +3,7 @@
     background: url("../images/terminal-bg.png") right top repeat-y;
     box-sizing: border-box;
     font-family: "Ubuntu Mono", monospace;
+    font-weight: bold;
     height: 100%;
     margin: 0;
     padding: 0 3px;
@@ -28,10 +29,8 @@
 
 .output.error {
     color: #f44;
-    font-weight: bold;
 }
 
 .prompt, .command, #input {
     color: #fff;
-    font-weight: bold;
 }
