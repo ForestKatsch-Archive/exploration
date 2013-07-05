@@ -75,15 +75,16 @@ function ui_init() {
     loaded("ui");
 }
 
-function ui_run_line() {
-    prop.ui.terminal.cursor.position=0;
-    $(".current.line").remove();
+function ui_print(l) {
     var line=$(document.createElement("li"));
-    line.addClass("line");
-    line.append("<span class='prompt'>"+prop.ui.terminal.prompt+"</span>")
-    line.append("<span class='command'>"+prop.ui.terminal.input+"</span>")
+    var out=$(document.createElement("span"));
+    out.addClass("output");
+    out.html(l);
+    line.append(out);
     $("#terminal").append(line);
-    var c=prop.ui.terminal.input;
+}
+
+function ui_run(c) {
     var s=c.split(/\s+/);
     var o=cmd_run(s);
     if(o == false) {
@@ -92,22 +93,29 @@ function ui_run_line() {
 	    var out=$(document.createElement("span"));
 	    out.addClass("output");
 	    out.addClass("error");
-	    out.text("The program '"+s[0]+"' isn't installed.");
+	    out.html("Unknown command <em>"+s[0]+"</em>. Please contact a Security Administrator with level 1 access.");
 	    line.append(out);
 	    $("#terminal").append(line);
 	}
     } else {
 	prop.ui.terminal.history.push(prop.ui.terminal.input);
 	prop.ui.terminal.current_history++;
+	o=o.split("\n");
 	for(var i=0;i<o.length;i++) {
-	    var line=$(document.createElement("li"));
-	    var out=$(document.createElement("span"));
-	    out.addClass("output");
-	    out.text(o[i]);
-	    line.append(out);
-	    $("#terminal").append(line);
+	    ui_print(o[i]);
 	}
     }
+}
+
+function ui_run_line() {
+    prop.ui.terminal.cursor.position=0;
+    $(".current.line").remove();
+    var line=$(document.createElement("li"));
+    line.addClass("line");
+    line.append("<span class='prompt'>"+prop.ui.terminal.prompt+"</span>")
+    line.append("<span class='command'>"+prop.ui.terminal.input+"</span>")
+    $("#terminal").append(line);
+    ui_run(prop.ui.terminal.input);
     line=$(document.createElement("li"));
     line.addClass("line current");
     line.append("<span class='prompt'>"+prop.ui.terminal.prompt+"</span>")

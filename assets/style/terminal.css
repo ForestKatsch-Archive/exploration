@@ -9,7 +9,26 @@
     padding-bottom: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
+    text-shadow: 0 0 5px #0f0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     width: 100%;
+}
+
+#terminal::-webkit-scrollbar {
+    width: 2px;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+    background-color: #0f0;
+    box-shadow: 0 0 5px #0f0;
+}
+
+#terminal em {
+    color: #0af;
+    font-style: normal;
+    font-weight: bold;
 }
 
 .line {
@@ -23,5 +42,6 @@
 
 .output.error {
     color: #fa0;
+    text-shadow: 0 0 5px #fa0;
 }
 
