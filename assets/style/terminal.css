@@ -1,0 +1,23 @@
+
+#terminal {
+    color: #0f0;
+    box-sizing: border-box;
+    font-family: "Ubuntu Mono", monospace;
+    height: 100%;
+    margin: 0;
+    padding: 0 3px;
+    padding-bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+#cursor {
+    border-bottom: 2px solid #fff;
+    padding-bottom: -2px;
+}
+
+.output.error {
+    color: #fa0;
+}
+
