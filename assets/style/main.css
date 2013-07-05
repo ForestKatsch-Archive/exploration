@@ -1,8 +1,9 @@
 
-@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic);
-@import url(http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic);
+/*@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic);*/
+/*@import url(http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic);*/
 
 @import "terminal.css";
+@import "image.css";
 
 html, body {
     height: 100%;
@@ -13,7 +14,9 @@ html, body {
 }
 
 html {
+    color: #38f;
     font-family: "Exo", sans-serif;
+    text-shadow: 0 0 4px #38f;
 }
 
 html:hover {
@@ -23,5 +26,11 @@ html:hover {
 body {
     background: #000 url("../images/background.jpg");
     background-size: auto 100%;
+}
+
+em {
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: underline;
 }
 

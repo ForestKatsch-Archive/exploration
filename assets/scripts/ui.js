@@ -22,7 +22,7 @@ function ui_init() {
 
     prop.ui.terminal.input="";
     
-    ui_print(_("suspicious-activity"),"error");
+    ui_print(_("suspicious-activity-in-utah-center"),"error");
     ui_print(_("welcome").replace(/\[LAST-NAME\]/g,"Moore"));
 
     $("#terminal").append("<li class='line current'><span class='prompt'>"+prop.ui.terminal.prompt+"</span><span id='input'><span id='cursor'>&nbsp;</span></span></li>");

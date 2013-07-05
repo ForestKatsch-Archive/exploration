@@ -4,8 +4,11 @@ function cmd_init() {
 }
 
 function cmd_run(c) {
+    console.log(c);
     if(c == "help") {
-	return _("help").replace(/\[LEVEL\]/g,"5").replace(/\[LAST-NAME\]/g,"Moore");
+	return _("help");
+    } else if(c == "logout") {
+	return _("logged-out");
     }
     return false;
 }

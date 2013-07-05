@@ -10,5 +10,12 @@ function prop_init() {
     prop.assets={};
     prop.about.fps=0;
     prop.about.fps_samples=60;
+
+    prop.player={}
+    prop.player.name={
+	title:"Technician",
+	first:"Thomas",
+	last:"Moore"
+    };
     loaded("prop");
 }

@@ -22,12 +22,6 @@
     width: 0px;
 }
 
-#terminal em {
-    font-style: normal;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
 .line {
     white-space: pre-wrap;
 }
