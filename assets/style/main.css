@@ -27,7 +27,7 @@ html:hover {
 }
 
 body {
-    background: #000 url("../images/background.jpg");
+    background: #000 url("../images/background.jpg") center center no-repeat;
     background-size: auto 100%;
 }
 

@@ -8,6 +8,16 @@ var KEY_DOWN=40;
 
 function ui_init() {
     prop.ui={};
+
+    prop.ui.background={};
+    prop.ui.background.pan=0;
+
+    setInterval(function() {
+	prop.ui.background.pan+=0.005;
+	var pan=Math.sin(prop.ui.background.pan)*50-50;
+	$("body").css("background-position",pan+"px 0");
+    },1000/60);
+
     prop.ui.terminal={};
 
     prop.ui.terminal.history=[];
