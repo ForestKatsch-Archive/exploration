@@ -16,9 +16,12 @@ html {
     font-family: "Exo", sans-serif;
 }
 
+html:hover {
+    cursor: url("../images/cursor.png"),auto;
+}
+
 body {
-    background: #cdf url("../images/backgrounds/city.png");
+    background: #000 url("../images/background.jpg");
     background-size: auto 100%;
-    background: #000;
 }
 

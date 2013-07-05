@@ -13,17 +13,23 @@ function ui_init() {
     prop.ui.terminal.history=[];
     prop.ui.terminal.current_history=0;
     prop.ui.terminal.current_input="";
+    prop.ui.terminal.processing=false;
 
-    prop.ui.terminal.prompt="$ ";
+    prop.ui.terminal.prompt="UniSec [<em>Moore</em>] $ ";
 
     prop.ui.terminal.cursor={};
     prop.ui.terminal.cursor.position=0;
 
     prop.ui.terminal.input="";
+    
+    ui_print(_("suspicious-activity"),"error");
+    ui_print(_("welcome").replace("[LAST-NAME]","Moore"));
 
     $("#terminal").append("<li class='line current'><span class='prompt'>"+prop.ui.terminal.prompt+"</span><span id='input'><span id='cursor'>&nbsp;</span></span></li>");
 
     $(window).keypress(function(e) {
+	if(prop.ui.terminal.processing == true)
+	    return;
 	if(e.which == KEY_ENTER) {
 	    ui_run_line();
 	} else {
@@ -38,6 +44,8 @@ function ui_init() {
     });
 
     $(window).keydown(function(e) {
+	if(prop.ui.terminal.processing == true)
+	    return;
 	if([37,38,39,40].indexOf(e.keyCode) > -1) {
             e.preventDefault();
 	}
@@ -75,16 +83,18 @@ function ui_init() {
     loaded("ui");
 }
 
-function ui_print(l) {
+function ui_print(l,classes) {
     var line=$(document.createElement("li"));
     var out=$(document.createElement("span"));
     out.addClass("output");
+    if(classes != undefined)
+	out.addClass(classes);
     out.html(l);
     line.append(out);
     $("#terminal").append(line);
 }
 
-function ui_run(c) {
+function ui_run(c,callback) {
     var s=c.split(/\s+/);
     var o=cmd_run(s);
     if(o == false) {
@@ -93,7 +103,7 @@ function ui_run(c) {
 	    var out=$(document.createElement("span"));
 	    out.addClass("output");
 	    out.addClass("error");
-	    out.html("Unknown command <em>"+s[0]+"</em>. Please contact a Security Administrator with level 1 access.");
+	    out.html(_("unknown-command").replace("[COMMAND]",s[0]));
 	    line.append(out);
 	    $("#terminal").append(line);
 	}
@@ -105,9 +115,12 @@ function ui_run(c) {
 	    ui_print(o[i]);
 	}
     }
+    prop.ui.terminal.processing=false;
+    callback();
 }
 
 function ui_run_line() {
+    prop.ui.terminal.processing=true;
     prop.ui.terminal.cursor.position=0;
     $(".current.line").remove();
     var line=$(document.createElement("li"));
@@ -115,14 +128,15 @@ function ui_run_line() {
     line.append("<span class='prompt'>"+prop.ui.terminal.prompt+"</span>")
     line.append("<span class='command'>"+prop.ui.terminal.input+"</span>")
     $("#terminal").append(line);
-    ui_run(prop.ui.terminal.input);
-    line=$(document.createElement("li"));
-    line.addClass("line current");
-    line.append("<span class='prompt'>"+prop.ui.terminal.prompt+"</span>")
-    line.append("<span id='input'><span id='cursor'>&nbsp;</span></span>")
-    $("#terminal").append(line);
-    prop.ui.terminal.input="";
-    $("#terminal").scrollTop($("#terminal")[0].scrollHeight);
+    ui_run(prop.ui.terminal.input,function() {
+	line=$(document.createElement("li"));
+	line.addClass("line current");
+	line.append("<span class='prompt'>"+prop.ui.terminal.prompt+"</span>")
+	line.append("<span id='input'><span id='cursor'>&nbsp;</span></span>")
+	$("#terminal").append(line);
+	prop.ui.terminal.input="";
+	$("#terminal").scrollTop($("#terminal")[0].scrollHeight);
+    });
 }
 
 function ui_update_input() {
