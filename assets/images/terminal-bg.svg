@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="2048"
-   height="14"
+   height="8"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
@@ -20,17 +20,45 @@
    inkscape:export-ydpi="90">
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient3873">
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="0"
+         id="stop3875" />
+      <stop
+         id="stop3881"
+         offset="0.5"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3877" />
+    </linearGradient>
     <filter
        inkscape:collect="always"
        id="filter6852"
-       x="-0.0061445784"
+       x="-0.0061445786"
        width="1.0122892"
-       y="-0.25499977"
-       height="1.5099995">
+       y="-0.25499976"
+       height="1.5099995"
+       color-interpolation-filters="sRGB">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="6.7999939"
          id="feGaussianBlur6854" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3915"
+       x="-0.0012011893"
+       width="1.0024024"
+       y="-1.2119895"
+       height="3.4239789">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.01"
+         id="feGaussianBlur3917" />
     </filter>
   </defs>
   <sodipodi:namedview
@@ -40,9 +68,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.58105469"
-     inkscape:cx="1936.1345"
-     inkscape:cy="-24.021481"
+     inkscape:zoom="11.313709"
+     inkscape:cx="1994.815"
+     inkscape:cy="1.6076797"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -50,7 +78,8 @@
      inkscape:window-height="748"
      inkscape:window-x="0"
      inkscape:window-y="18"
-     inkscape:window-maximized="0">
+     inkscape:window-maximized="0"
+     borderlayer="true">
     <inkscape:grid
        type="xygrid"
        id="grid2985"
@@ -75,9 +104,9 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-1038.3622)">
+     transform="translate(0,-1044.3622)">
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:0.90869564000000003;stroke:#3388ff;stroke-opacity:1;stroke-width:8;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter6852)"
+       style="fill:#000000;fill-opacity:0.90869565;stroke:#3388ff;stroke-width:8;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter6852)"
        id="rect6826"
        width="2655.9976"
        height="64"
@@ -86,5 +115,12 @@
        transform="translate(0,1038.3622)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.4;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter3915)"
+       id="rect3101"
+       width="1999"
+       height="2.0000174"
+       x="-4"
+       y="1047.3622" />
   </g>
 </svg>

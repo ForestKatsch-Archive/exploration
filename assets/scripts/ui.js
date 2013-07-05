@@ -23,7 +23,7 @@ function ui_init() {
     prop.ui.terminal.input="";
     
     ui_print(_("suspicious-activity"),"error");
-    ui_print(_("welcome").replace("[LAST-NAME]","Moore"));
+    ui_print(_("welcome").replace(/\[LAST-NAME\]/g,"Moore"));
 
     $("#terminal").append("<li class='line current'><span class='prompt'>"+prop.ui.terminal.prompt+"</span><span id='input'><span id='cursor'>&nbsp;</span></span></li>");
 
@@ -103,7 +103,7 @@ function ui_run(c,callback) {
 	    var out=$(document.createElement("span"));
 	    out.addClass("output");
 	    out.addClass("error");
-	    out.html(_("unknown-command").replace("[COMMAND]",s[0]));
+	    out.html(_("unknown-command").replace(/\[COMMAND\]/g,s[0]));
 	    line.append(out);
 	    $("#terminal").append(line);
 	}
