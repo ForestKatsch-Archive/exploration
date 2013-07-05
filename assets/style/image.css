@@ -1,0 +1,17 @@
+
+#image {
+    background: transparent url("../images/image-bg.png") left bottom no-repeat;
+    padding: 50px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    min-height: 240px;
+    min-width: 240px;
+    -webkit-transition: width 0.1s ease, height 0.1s ease;
+}
+
+#image .caption {
+    position: absolute;
+    bottom: 50px;
+    left: 90px;
+}
