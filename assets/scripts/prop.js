@@ -12,6 +12,7 @@ function prop_init() {
     prop.about.fps_samples=60;
 
     prop.player={}
+    prop.player.level=5;
     prop.player.name={
 	title:"Technician",
 	first:"Thomas",

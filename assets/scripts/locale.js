@@ -19,9 +19,10 @@ locale["logged-out"]="You have been disconnected.";
 function _(s) {
     if(s in locale) {
 	return locale[s].
-	replace(/\[TITLE\]/g,prop.player.name.title).
-	replace(/\[LAST-NAME\]/g,prop.player.name.last).
-	replace(/\[FIRST-NAME\]/g,prop.player.name.first);
+	    replace(/\[LEVEL\]/g,prop.player.level).
+	    replace(/\[TITLE\]/g,prop.player.name.title).
+	    replace(/\[LAST-NAME\]/g,prop.player.name.last).
+	    replace(/\[FIRST-NAME\]/g,prop.player.name.first);
     } else {
 	console.log(s+" needs a translation!");
 	return s;

@@ -96,9 +96,11 @@ function ui_print(l,classes) {
 
 function ui_run(c,callback) {
     var s=c.split(/\s+/);
+    if(s[0] == "")
+	s=s.splice(1);
     var o=cmd_run(s);
     if(o == false) {
-	if(s[0].length != 0) {
+	if(s.length != 0) {
 	    var line=$(document.createElement("li"));
 	    var out=$(document.createElement("span"));
 	    out.addClass("output");

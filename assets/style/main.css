@@ -1,6 +1,6 @@
 
-/*@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic);*/
-/*@import url(http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic);*/
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic);
 
 @import "terminal.css";
 @import "image.css";
@@ -10,13 +10,16 @@ html, body {
     padding: 0;
     margin: 0;
     width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     overflow: hidden;
 }
 
 html {
     color: #38f;
     font-family: "Exo", sans-serif;
-    text-shadow: 0 0 4px #38f;
+    font-size: 110%;
 }
 
 html:hover {
@@ -31,6 +34,10 @@ body {
 em {
     font-style: normal;
     font-weight: bold;
-    text-decoration: underline;
 }
 
+::selection {
+    background-color: #38f;
+    border-color: #000;
+    color: #000;
+}
