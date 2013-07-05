@@ -5,6 +5,6 @@ function cmd_init() {
 
 function cmd_run(c) {
     if(c == "ls")
-	return ["That program isn't fucking installed you dumbass."];
+	return ["total 0"];
     return false;
 }

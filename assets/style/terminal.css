@@ -12,6 +12,10 @@
     width: 100%;
 }
 
+.line {
+    white-space: pre-wrap;
+}
+
 #cursor {
     border-bottom: 2px solid #fff;
     padding-bottom: -2px;

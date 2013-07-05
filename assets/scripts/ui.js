@@ -21,6 +21,8 @@ function ui_init() {
 
     prop.ui.terminal.input="";
 
+    $("#terminal").append("<li class='line current'><span class='prompt'>"+prop.ui.terminal.prompt+"</span><span id='input'><span id='cursor'>&nbsp;</span></span></li>");
+
     $(window).keypress(function(e) {
 	if(e.which == KEY_ENTER) {
 	    ui_run_line();
@@ -36,6 +38,9 @@ function ui_init() {
     });
 
     $(window).keydown(function(e) {
+	if([37,38,39,40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+	}
 	if(e.which == KEY_RIGHT) {
 	    prop.ui.terminal.cursor.position++;
 	} else if(e.which == KEY_LEFT) {
@@ -79,15 +84,18 @@ function ui_run_line() {
     line.append("<span class='command'>"+prop.ui.terminal.input+"</span>")
     $("#terminal").append(line);
     var c=prop.ui.terminal.input;
-    var o=cmd_run(c);
+    var s=c.split(/\s+/);
+    var o=cmd_run(s);
     if(o == false) {
-	var line=$(document.createElement("li"));
-	var out=$(document.createElement("span"));
-	out.addClass("output");
-	out.addClass("error");
-	out.text("The program "+c+" isn't installed.");
-	line.append(out);
-	$("#terminal").append(line);
+	if(s[0].length != 0) {
+	    var line=$(document.createElement("li"));
+	    var out=$(document.createElement("span"));
+	    out.addClass("output");
+	    out.addClass("error");
+	    out.text("The program '"+s[0]+"' isn't installed.");
+	    line.append(out);
+	    $("#terminal").append(line);
+	}
     } else {
 	prop.ui.terminal.history.push(prop.ui.terminal.input);
 	prop.ui.terminal.current_history++;
