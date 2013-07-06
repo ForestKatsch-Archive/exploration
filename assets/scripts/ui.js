@@ -9,24 +9,26 @@ var KEY_DOWN=40;
 function ui_init() {
     prop.ui={};
 
-    prop.ui.background={};
-    prop.ui.background.pan=0;
+    prop.ui.notifications=[];
 
     prop.ui.special={};
     prop.ui.special.text="";
     prop.ui.special.command="";
 
-    $("#special").mouseup(function() {
-	ui_special_run();
-    });
+    // prop.ui.background={};
+    // prop.ui.background.pan=0;
 
-    /*
-    setInterval(function() {
-	prop.ui.background.pan+=0.005;
-	var pan=Math.sin(prop.ui.background.pan)*50-50;
-	$("body").css("background-position",pan+"px 0");
-    },1000/60);
-    */
+    // $("#special").mouseup(function() {
+    // 	ui_special_run();
+    // });
+
+    // 
+    // setInterval(function() {
+    // 	prop.ui.background.pan+=0.005;
+    // 	var pan=Math.sin(prop.ui.background.pan)*50-50;
+    // 	$("body").css("background-position",pan+"px 0");
+    // },1000/60);
+    // 
     prop.ui.terminal={};
 
     prop.ui.terminal.history=[];
@@ -99,7 +101,56 @@ function ui_init() {
 	ui_update_input();
     });
 
+    setInterval(function() {
+	ui_add_notification("This be a random notification",["foo","bar"]);
+    },1000);
+
     loaded("ui");
+}
+
+function ui_delete_notification(id) {
+    var li=$("#notification-number-"+id);
+    li.addClass("hidden");
+    prop.ui.notifications[id]=undefined;
+}
+
+function ui_open_notification(id) {
+
+}
+
+function ui_add_notification(text,command) {
+    prop.ui.notifications.push([text,command]);
+    var li=$(document.createElement("li"));
+    li.attr("id","notification-number-"+(prop.ui.notifications.length-1));
+    li.addClass("notification");
+    li.addClass("hidden");
+    li.html(text);
+    li.mousemove(function(e) {
+	var t=$(this);
+	var right=(t.offset().left-e.clientX)+t.outerWidth();
+	var top=-(t.offset().top-e.clientY);
+	if(right < 55 && top < 15)
+	    t.addClass("remove-hover");
+	else
+	    t.removeClass("remove-hover");
+    });
+    li.mousedown(function(e) {
+	var t=$(this);
+	var right=(t.offset().left-e.clientX)+t.outerWidth();
+	var top=-(t.offset().top-e.clientY);
+	var id=parseInt(t.attr("id").substr("notification-number-".length));
+	if(right < 55 && top < 15)
+	    ui_delete_notification(id);
+	else
+	    ui_open_notification(id);
+    });
+    li.mouseout(function() {
+    	$(this).removeClass("remove-hover");
+    })
+    $("#notifications").prepend(li);
+    setTimeout(function() {
+	li.removeClass("hidden");
+    },0);
 }
 
 function ui_replace(element,text,number) {

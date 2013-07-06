@@ -10,7 +10,7 @@
     padding-right: 20px;
     padding-bottom: 10px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 70%;
 }
 
@@ -28,6 +28,7 @@
 
 .output.error {
     color: #f44;
+    font-weight: bold;
 }
 
 .prompt, .command, #input {

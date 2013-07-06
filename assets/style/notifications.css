@@ -1,16 +1,41 @@
 
 #notifications {
-    border-top: 4px solid transparent;
+    display: block;
+    padding-top: 4px;
+    height: 50%;
+    overflow-y: auto;
+}
+
+#notifications::-webkit-scrollbar {
+    width: 0px;
 }
 
 .notification {
-    color: #fff;
+    border-bottom: 1px solid transparent;
     font-size: 90%;
+    font-weight: bold;
+    max-height: 1.7em;
     padding: 3px 10px;
+    padding-right: 50px;
+    padding-top: 7px;
+    -webkit-transition: max-height 0.5s ease, padding 0.5s ease, border-width 0.5s ease, opacity 0.5s ease;
+}
+
+.notification.hidden {
+    border-width: 0;
+    max-height: 0em;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
 }
 
 .notification:hover {
-    background-color: rgba(51,136,255,1.0);
-    color: #000;
+    background: rgba(0,0,0,1) url("../images/gui/selection-removable.png") right top no-repeat;
+    border-bottom-color: #38f;
+}
+
+.notification.remove-hover {
+    background: rgba(0,0,0,1) url("../images/gui/selection-removable-hover.png") right top no-repeat;
+    border-bottom-color: #38f;
 }
 
