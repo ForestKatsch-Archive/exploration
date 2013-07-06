@@ -15,12 +15,12 @@ function ui_init() {
     prop.ui.special.text="";
     prop.ui.special.command="";
 
+    $("#special").mouseup(function() {
+    	ui_special_run();
+    });
+
     // prop.ui.background={};
     // prop.ui.background.pan=0;
-
-    // $("#special").mouseup(function() {
-    // 	ui_special_run();
-    // });
 
     // 
     // setInterval(function() {
@@ -100,10 +100,8 @@ function ui_init() {
 	prop.ui.terminal.cursor.position=clamp(0,prop.ui.terminal.cursor.position);
 	ui_update_input();
     });
-
-    setInterval(function() {
-	ui_add_notification("This be a random notification",["foo","bar"]);
-    },1000);
+    
+    ui_add_notification("Welcome, Technician Moore.","delete");
 
     loaded("ui");
 }
@@ -115,7 +113,10 @@ function ui_delete_notification(id) {
 }
 
 function ui_open_notification(id) {
-
+    if(prop.ui.notifications[id][1] == "delete")
+	ui_delete_notification(id);
+    else
+	run(prop.ui.notifications[id][1]);
 }
 
 function ui_add_notification(text,command) {
@@ -192,10 +193,7 @@ function ui_special_run() {
     var c=prop.ui.special.command;
     if(c == "")
 	return;
-    console.log(c);
-    if(c[0] == "open") {
-	console.log("Opening the "+c[1]+" document.");
-    }
+    run(c);
 }
 
 function ui_reset_input() {

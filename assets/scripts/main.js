@@ -1,7 +1,7 @@
 
 var VERSION=[0,0,1];
 
-var modules=["cmd","main","assets","prop","ui"];
+var modules=["cmd","main","assets","prop","ui","run"];
 var module_number=0;
 var module_start_time;
 
@@ -32,6 +32,7 @@ $(document).ready(function() {
     init();
     setTimeout(function() {
 	prop_init(); // MUST BE FIRST!
+	run_init();
 	assets_init();
 	cmd_init();
 	ui_init();
