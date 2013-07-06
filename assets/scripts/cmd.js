@@ -4,11 +4,14 @@ function cmd_init() {
 }
 
 function cmd_run(c) {
-    console.log(c);
     if(c == "help") {
+	ui_special(_("open-document")+_(" ")+_("general-usage"),["open","general-usage"]);
 	return _("help");
+    } else if(c == "clear") {
+	ui_clear();
+	return "";
     } else if(c == "logout") {
 	return _("logged-out");
     }
-    return false;
+    return null;
 }

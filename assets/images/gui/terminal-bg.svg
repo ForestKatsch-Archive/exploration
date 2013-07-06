@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="2048"
+   width="24"
    height="2048"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="terminal-bg.svg"
-   inkscape:export-filename="/home/forest/projects/online/exploration/assets/images/terminal-bg.png"
+   sodipodi:docname="sidebar-bg.svg"
+   inkscape:export-filename="/home/forest/projects/online/exploration/assets/images/gui/sidebar-bg.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -35,14 +35,6 @@
          offset="1"
          id="stop3877" />
     </linearGradient>
-    <filter
-       inkscape:collect="always"
-       id="filter3894">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="1.0715"
-         id="feGaussianBlur3896" />
-    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -51,17 +43,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="11.313709"
-     inkscape:cx="2081.717"
-     inkscape:cy="2051.0275"
+     inkscape:zoom="22.627418"
+     inkscape:cx="6.6560235"
+     inkscape:cy="2002.5722"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1145"
+     inkscape:window-width="1362"
+     inkscape:window-height="748"
      inkscape:window-x="0"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
+     inkscape:window-y="18"
+     inkscape:window-maximized="0"
      borderlayer="true">
     <inkscape:grid
        type="xygrid"
@@ -89,26 +81,14 @@
      id="layer1"
      transform="translate(0,995.6378)">
     <path
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path3864"
-       d="m -64,-1059.6378 2110,0 c 0,0 0,1456.87228 0,2176 l -2110,0 z"
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;filter:url(#filter3894);stroke-opacity:1" />
-    <path
-       style="opacity:0.8;fill:#000000;fill-opacity:1;stroke:none"
-       d="m -64,-1059.6378 2110,0 c 0,0 0,1456.87228 0,2176 l -2110,0 z"
-       id="rect3052"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
-    <path
        style="fill:none;stroke:#3388ff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 2044,1116.3622 0,-2052 -16,-16 0,-108"
+       d="m 22,1116.3622 0,-2052 -16,-16 0,-108"
        id="path3822"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
        style="fill:#3388ff;fill-opacity:1;stroke:#3388ff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 2036,-1057.6378 0,102 8,8 0,-110 z"
+       d="m 14,-1057.6378 0,102 8,8 0,-110 z"
        id="path3824"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />

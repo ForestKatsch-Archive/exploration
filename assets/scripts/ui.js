@@ -12,12 +12,21 @@ function ui_init() {
     prop.ui.background={};
     prop.ui.background.pan=0;
 
+    prop.ui.special={};
+    prop.ui.special.text="";
+    prop.ui.special.command="";
+
+    $("#special").mouseup(function() {
+	ui_special_run();
+    });
+
+    /*
     setInterval(function() {
 	prop.ui.background.pan+=0.005;
 	var pan=Math.sin(prop.ui.background.pan)*50-50;
 	$("body").css("background-position",pan+"px 0");
     },1000/60);
-
+    */
     prop.ui.terminal={};
 
     prop.ui.terminal.history=[];
@@ -25,17 +34,17 @@ function ui_init() {
     prop.ui.terminal.current_input="";
     prop.ui.terminal.processing=false;
 
-    prop.ui.terminal.prompt="UniSec [<em>Moore</em>] $ ";
+    prop.ui.terminal.prompt=_("prompt");
 
     prop.ui.terminal.cursor={};
     prop.ui.terminal.cursor.position=0;
 
     prop.ui.terminal.input="";
     
+    ui_clear()
+
     ui_print(_("suspicious-activity-in-utah-center"),"error");
     ui_print(_("welcome").replace(/\[LAST-NAME\]/g,"Moore"));
-
-    $("#terminal").append("<li class='line current'><span class='prompt'>"+prop.ui.terminal.prompt+"</span><span id='input'><span id='cursor'>&nbsp;</span></span></li>");
 
     $(window).keypress(function(e) {
 	if(prop.ui.terminal.processing == true)
@@ -93,6 +102,61 @@ function ui_init() {
     loaded("ui");
 }
 
+function ui_replace(element,text,number) {
+    if(element.text() == text)
+	return;
+    if(number == undefined || number == 0)
+	number=-1;
+    if(number < 0) {
+	var t=element.text();
+	if(t.length == 0) {
+	    number=1;
+	} else {
+	    element.text(t.substr(0,t.length-1));
+	    number--;
+	}
+    } else if(number > 0) {
+	var t=element.text();
+	if(t.length == text.length) {
+	    number=0;
+	} else {
+	    element.text(text.substr(0,t.length+1));
+	    number++;
+	}
+    }
+    if(number != 0 && number != undefined) {
+	setTimeout(function() {
+	    ui_replace(element,text,number);
+	},1000/50);
+    }
+}
+
+function ui_special(text,command) {
+    prop.ui.special.text=text;
+    prop.ui.special.command=command;
+    ui_replace($("#special"),text);
+}
+
+function ui_special_run() {
+    var c=prop.ui.special.command;
+    if(c == "")
+	return;
+    console.log(c);
+    if(c[0] == "open") {
+	console.log("Opening the "+c[1]+" document.");
+    }
+}
+
+function ui_reset_input() {
+    $(".current.line").remove();
+    $("#terminal").append("<li class='line current'><span class='prompt'>"+prop.ui.terminal.prompt+"</span><span id='input'><span id='cursor'>&nbsp;</span></span></li>");
+}
+
+function ui_clear() {
+    $("#terminal").empty();
+    ui_reset_input();
+}
+
 function ui_print(l,classes) {
     var line=$(document.createElement("li"));
     var out=$(document.createElement("span"));
@@ -102,6 +166,7 @@ function ui_print(l,classes) {
     out.html(l);
     line.append(out);
     $("#terminal").append(line);
+    ui_reset_input();
 }
 
 function ui_run(c,callback) {
@@ -109,7 +174,7 @@ function ui_run(c,callback) {
     if(s[0] == "")
 	s=s.splice(1);
     var o=cmd_run(s);
-    if(o == false) {
+    if(o == null) {
 	if(s.length != 0) {
 	    var line=$(document.createElement("li"));
 	    var out=$(document.createElement("span"));
@@ -122,9 +187,11 @@ function ui_run(c,callback) {
     } else {
 	prop.ui.terminal.history.push(prop.ui.terminal.input);
 	prop.ui.terminal.current_history++;
-	o=o.split("\n");
-	for(var i=0;i<o.length;i++) {
-	    ui_print(o[i]);
+	if(o != "") {
+	    o=o.split("\n");
+	    for(var i=0;i<o.length;i++) {
+		ui_print(o[i]);
+	    }
 	}
     }
     prop.ui.terminal.processing=false;
@@ -141,11 +208,7 @@ function ui_run_line() {
     line.append("<span class='command'>"+prop.ui.terminal.input+"</span>")
     $("#terminal").append(line);
     ui_run(prop.ui.terminal.input,function() {
-	line=$(document.createElement("li"));
-	line.addClass("line current");
-	line.append("<span class='prompt'>"+prop.ui.terminal.prompt+"</span>")
-	line.append("<span id='input'><span id='cursor'>&nbsp;</span></span>")
-	$("#terminal").append(line);
+	ui_reset_input();
 	prop.ui.terminal.input="";
 	$("#terminal").scrollTop($("#terminal")[0].scrollHeight);
     });

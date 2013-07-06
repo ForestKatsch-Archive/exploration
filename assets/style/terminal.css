@@ -1,9 +1,9 @@
 
 #terminal {
-    background: url("../images/terminal-bg.png") right top repeat-y;
+    background: rgba(0,0,0,0.8) url("../images/gui/terminal-bg.png") right top repeat-y;
+    box-shadow: 0 0 2px #000;
     box-sizing: border-box;
     font-family: "Ubuntu Mono", monospace;
-    font-weight: bold;
     height: 100%;
     margin: 0;
     padding: 0 3px;
@@ -11,8 +11,7 @@
     padding-bottom: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
-    width: 60%;
-    max-width: 2048px;
+    width: 70%;
 }
 
 #terminal::-webkit-scrollbar {
@@ -33,4 +32,8 @@
 
 .prompt, .command, #input {
     color: #fff;
+}
+
+.prompt {
+    font-weight: bold;
 }

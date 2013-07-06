@@ -1,0 +1,16 @@
+
+#notifications {
+    border-top: 4px solid transparent;
+}
+
+.notification {
+    color: #fff;
+    font-size: 90%;
+    padding: 3px 10px;
+}
+
+.notification:hover {
+    background-color: rgba(51,136,255,1.0);
+    color: #000;
+}
+
